@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#020402">
+<title>MADUSANKA | Personal Profile</title>
+<style>
+:root{--green:#43ff36;--pink:#ff279b;--cyan:#00eaff;--gold:#ffe45c}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#000;color:#d8ffd5;font-family:Consolas,"Courier New",monospace}
+body{overflow-x:hidden}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+#matrix{z-index:0;opacity:.35}#network{z-index:1;opacity:0;transition:opacity 1.2s}
+.scan{position:fixed;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 3px,#00ff1a08 4px,transparent 5px)}
+main{position:relative;z-index:3;width:min(100% - 28px,570px);margin:0 auto;padding:30px 0 46px}
+.intro{min-height:95vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.line{width:100%;height:1px;background:var(--green);box-shadow:0 0 12px var(--green);margin:20px 0}
+.brand{font-size:clamp(22px,6vw,32px);letter-spacing:5px;color:var(--green);text-shadow:0 0 13px #39ff14}
+.sub{font-size:11px;letter-spacing:3px;color:#b5ffad;margin-top:12px}
+.start{margin-top:30px;padding:14px 30px;border:1px solid var(--green);background:#000;color:var(--green);font:bold 13px Consolas;letter-spacing:2px;box-shadow:0 0 13px #39ff1430;cursor:pointer}
+.start:active,.start:hover{background:var(--green);color:#000}
+.status{display:none;text-align:left;width:100%;min-height:130px;line-height:1.8;letter-spacing:2px;color:var(--green);font-size:14px;white-space:pre-line}
+.profile{display:none;animation:appear 1s ease both}
+@keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.granted{text-align:center;font-size:14px;letter-spacing:4px;color:var(--pink);text-shadow:0 0 12px var(--pink);margin:10px 0 26px}
+.card{border:1px solid #43ff3666;background:#020702d9;box-shadow:0 0 25px #39ff1414;padding:22px;border-radius:4px}
+.head{text-align:center}
+.avatar{width:116px;height:116px;border-radius:50%;border:2px solid var(--green);padding:4px;object-fit:cover;box-shadow:0 0 22px #39ff1466}
+.name{font-size:clamp(28px,8vw,42px);letter-spacing:4px;color:#f4fff2;text-shadow:0 0 12px #fff;margin:16px 0 6px;overflow-wrap:anywhere}
+.tag{font-size:11px;letter-spacing:3px;color:var(--green)}
+.bio{font-family:Arial,sans-serif;color:#b8c7b8;font-size:14px;line-height:1.7;text-align:center;margin:18px 0 24px}
+.section{border-top:1px solid #43ff3644;padding-top:17px;margin-top:18px}
+h2{font-size:13px;letter-spacing:3px;color:var(--green);font-weight:500;margin:0 0 14px}
+.details{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.item{border:1px solid #43ff3633;background:#39ff1408;padding:12px;min-width:0}
+.label{font-size:9px;letter-spacing:2px;color:#7f9e7d;margin-bottom:7px}
+.value{font-size:12px;color:#efffee;overflow-wrap:anywhere}
+.skills,.links{display:flex;flex-wrap:wrap;gap:8px}
+.skill{border:1px solid #ffe45c77;color:var(--gold);padding:8px 11px;font-size:11px}
+a.link{color:#d9fff9;text-decoration:none;border:1px solid #00eaff77;padding:10px 12px;font-size:11px;letter-spacing:1px}
+a.link:hover{background:#00eaff;color:#001}
+footer{text-align:center;color:#71906f;font-size:9px;letter-spacing:2px;margin:22px 0 5px}
+.hidden{display:none!important}
+@media(max-width:420px){.details{grid-template-columns:1fr}.card{padding:17px}.brand{letter-spacing:3px}}
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas><canvas id="network"></canvas><div class="scan"></div>
+<main>
+  <section class="intro" id="intro">
+    <div class="line"></div>
+    <div class="brand">MADUSANKA</div>
+    <div class="sub">PERSONAL PROFILE // DIGITAL IDENTITY</div>
+    <button class="start" id="start">OPEN MY PROFILE</button>
+    <div class="status" id="status"></div>
+    <div class="line"></div>
+  </section>
+  <section class="profile" id="profile">
+    <div class="granted">PROFILE ACCESSED<br>WELCOME</div>
+    <div class="card">
+      <div class="head">
+        <img class="avatar" src="profile.jpg" alt="Profile photo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22%3E%3Crect width=%22120%22 height=%22120%22 fill=%22%230b180b%22/%3E%3Ctext x=%2250%25%22 y=%2259%25%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%2343ff36%22 font-family=%22monospace%22%3EM%3C/text%3E%3C/svg%3E'">
+        <div class="name">MADUSANKA</div>
+        <div class="tag">WEB & BOT DEVELOPER</div>
+      </div>
+      <p class="bio">Welcome to my personal profile. I enjoy creating websites, Node.js projects, WhatsApp bots and useful digital tools.</p>
+      <div class="section">
+        <h2>01 // MY DETAILS</h2>
+        <div class="details">
+          <div class="item"><div class="label">NAME</div><div class="value">MADUSANKA</div></div>
+          <div class="item"><div class="label">LOCATION</div><div class="value">Galenbindunuwewa, Sri Lanka</div></div>
+          <div class="item"><div class="label">INTEREST</div><div class="value">Technology & Development</div></div>
+          <div class="item"><div class="label">PROJECTS</div><div class="value">WhatsApp Bots, Websites & APIs</div></div>
+        </div>
+      </div>
+      <div class="section">
+        <h2>02 // SKILLS</h2>
+        <div class="skills">
+          <span class="skill">JavaScript</span><span class="skill">HTML</span><span class="skill">CSS</span>
+          <span class="skill">Node.js</span><span class="skill">API Development</span><span class="skill">Web Development</span>
+          <span class="skill">Git</span><span class="skill">GitHub</span>
+        </div>
+      </div>
+      <div class="section">
+        <h2>03 // MY BOT LINKS</h2>
+        <div class="links">
+          <a class="link" href="#" onclick="return false">ADD BOT LINK 01</a>
+          <a class="link" href="#" onclick="return false">ADD BOT LINK 02</a>
+        </div>
+      </div>
+      <div class="section">
+        <h2>04 // CONTACT & SOCIAL</h2>
+        <div class="links">
+          <a class="link" href="#" onclick="return false">WHATSAPP</a>
+          <a class="link" href="#" onclick="return false">FACEBOOK</a>
+          <a class="link" href="#" onclick="return false">INSTAGRAM</a>
+          <a class="link" href="#" onclick="return false">GITHUB</a>
+          <a class="link" href="#" onclick="return false">YOUTUBE</a>
+          <a class="link" href="#" onclick="return false">EMAIL</a>
+        </div>
+      </div>
+    </div>
+    <footer>© MADUSANKA // PERSONAL PROFILE</footer>
+  </section>
+</main>
+<script>
+(()=> {
+ const matrix=document.getElementById('matrix'),m=matrix.getContext('2d');
+ const network=document.getElementById('network'),n=network.getContext('2d');
+ let w,h,cols,drops,points=[],mode=0;
+ function resize(){
+   w=matrix.width=network.width=innerWidth*devicePixelRatio;
+   h=matrix.height=network.height=innerHeight*devicePixelRatio;
+   matrix.style.width=network.style.width=innerWidth+'px';
+   matrix.style.height=network.style.height=innerHeight+'px';
+   cols=Math.ceil(w/(16*devicePixelRatio));drops=Array.from({length:cols},()=>Math.random()*-50);
+   points=Array.from({length:Math.max(35,Math.floor(innerWidth/9))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.55*devicePixelRatio,vy:(Math.random()-.5)*.55*devicePixelRatio}));
+ }
+ const chars='アカサタナハマヤラワ012345789ABCDEF<>/{}[]';
+ function draw(){
+   m.fillStyle='rgba(0,0,0,.09)';m.fillRect(0,0,w,h);m.font=(15*devicePixelRatio)+'px monospace';
+   for(let i=0;i<drops.length;i++){m.fillStyle='#39ff35';m.fillText(chars[Math.random()*chars.length|0],i*16*devicePixelRatio,drops[i]*16*devicePixelRatio);if(drops[i]*16*devicePixelRatio>h&&Math.random()>.975)drops[i]=0;drops[i]+=.8+Math.random();}
+   n.clearRect(0,0,w,h);
+   if(mode){let hue=mode===1?55:mode===2?325:185;for(let i=0;i<points.length;i++){let a=points[i];a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1;for(let j=i+1;j<points.length;j++){let b=points[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<150*devicePixelRatio){n.strokeStyle=`hsla(${hue},100%,60%,${(1-d/(150*devicePixelRatio))*.55})`;n.beginPath();n.moveTo(a.x,a.y);n.lineTo(b.x,b.y);n.stroke();}}n.fillStyle=`hsl(${hue},100%,65%)`;n.beginPath();n.arc(a.x,a.y,2*devicePixelRatio,0,7);n.fill();}}
+   requestAnimationFrame(draw);
+ }
+ resize();addEventListener('resize',resize);draw();
+ const start=document.getElementById('start'),status=document.getElementById('status');
+ start.addEventListener('click',()=>{
+   start.classList.add('hidden');status.style.display='block';mode=1;network.style.opacity='.9';
+   const lines=['INITIALIZING PROFILE...','LOADING PERSONAL DETAILS...','VERIFYING DIGITAL IDENTITY...','PREPARING PROFILE DISPLAY...'];
+   let i=0;status.textContent=lines[0];
+   const timer=setInterval(()=>{i++;if(i<lines.length){status.textContent=lines[i];mode=i+1;}else{clearInterval(timer);document.getElementById('intro').classList.add('hidden');document.getElementById('profile').style.display='block';mode=3;}},1000);
+ });
+})();
+</script>
+</body>
+  </html>
